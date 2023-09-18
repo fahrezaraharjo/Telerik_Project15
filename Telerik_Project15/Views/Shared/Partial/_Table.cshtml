@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Telerik_Project15.Models.OrderViewModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            @(Html.Kendo().Grid(Model)
+                .Name("grid")
+                .Columns(columns =>
+                {
+                    columns.Bound(p => p.OrderID).Filterable(false);
+                    columns.Bound(p => p.Freight);
+                    columns.Bound(p => p.OrderDate).Format("{0:MM/dd/yyyy}");
+                    columns.Bound(p => p.ShipName);
+                    columns.Bound(p => p.ShipCity);
+                })
+                .Pageable()
+                .Sortable()
+                .Scrollable()
+                .Filterable()
+                .HtmlAttributes(new { style = "height:300px;" })
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(20)
+                    .Read(read => read.Action("Orders_Read", "Grid"))
+                )
+            )
+        </div>
+    </div>
+    <h4>Telerik UI for ASP.NET MVC DatePicker:</h4>
+
+    @(Html.Kendo().DatePicker()
+        .Name("datepicker") // The Name of the DatePicker is mandatory. It specifies the "id" attribute of the component.
+        .Value(DateTime.Today) // Sets the value of the DatePicker.
+    )
+</div>

@@ -1,0 +1,15 @@
+﻿<div class="navbar">
+    <h2>Logo</h2>
+    @(Html.Kendo().Menu()
+    .Name("menu")
+    .Items(items =>
+    {
+        items.Add().Text("Home").Action("Index", "Home"); // Link to the home page
+        items.Add().Text("Dashboard").Action("Index", "Dashboard"); // Link to the Dashboard page
+        items.Add().Text("About").Action("About", "Home"); // Link to the about page
+        items.Add().Text("Services").Action("Services", "Home"); // Link to the services page
+        items.Add().Text("Contact").Action("Contact", "Home"); // Link to the contact page
+    })
+    .HtmlAttributes(new { @class = "right-menu" })
+)
+</div>

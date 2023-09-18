@@ -1,0 +1,18 @@
+﻿@model Telerik_Project15.Models.SidebarViewModel
+
+<div id="sidebar">
+    <div id="sidebar-content">
+        <ul class="nav">
+            <li>
+                @Html.Kendo().Button().Name("dashboardButton").Content("Dashboard")
+            </li>
+            <li>
+                @Html.Kendo().Button().Name("profileButton").Content("Profile")
+            </li>
+            <!-- Add more sidebar items as needed -->
+        </ul>
+    </div>
+    <div id="sidebar-toggle">
+        <button id="toggle-button">&#9658;</button>
+    </div>
+</div>
