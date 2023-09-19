@@ -9,14 +9,12 @@ namespace Telerik_Project15.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult Login()
+        public ActionResult Index()
         {
-            return View();
+            return View("Login");
         }
 
         [HttpPost]
-
-
         public ActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -36,11 +34,14 @@ namespace Telerik_Project15.Controllers
             }
 
             // If authentication fails or ModelState is invalid, return the login view
-            return View("Index");
+            return View("Login");
         }
 
         private bool AuthenticateUser(string username, string password)
         {
+            // Implement your authentication logic here
+            // For example, check credentials against a database
+            // Return true if authentication is successful, false otherwise
             throw new NotImplementedException();
         }
     }
