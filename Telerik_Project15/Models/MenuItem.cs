@@ -21,7 +21,7 @@ namespace Telerik_Project15.Models
 
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
-        [Column(TypeName = "decimal(10, 2)")]
+        [Column(TypeName = "decimal")]
         public decimal Price { get; set; }
 
         [ForeignKey("RestaurantID")]

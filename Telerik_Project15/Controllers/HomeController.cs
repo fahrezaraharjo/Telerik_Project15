@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
+﻿using System.Web.Mvc;
 
 namespace Telerik_Project15.Controllers
 {
@@ -11,13 +6,13 @@ namespace Telerik_Project15.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            return View("Index");
+            // This action is responsible for displaying the home page
+            // You can add your logic here to fetch data or perform other tasks
+            // and then return a view to display the home page content
+            return View();
         }
 
- 
-  
-
-}
+        // You can add more action methods as needed for other pages or functionality
+        // For example, you might have actions for displaying a profile, settings, etc.
+    }
 }

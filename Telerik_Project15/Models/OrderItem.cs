@@ -19,9 +19,9 @@ namespace Telerik_Project15.Models
         public int Quantity { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "ItemAmount must be greater than 0.")]
-        [Column(TypeName = "decimal(10, 2)")]
-        public decimal ItemAmount { get; set; }
+        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
+        [Column(TypeName = "decimal")]
+        public decimal Price { get; set; }
 
         [ForeignKey("OrderID")]
         public Order Order { get; set; }

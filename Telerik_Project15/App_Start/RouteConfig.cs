@@ -25,6 +25,11 @@ namespace Telerik_Project15
                  defaults: new { controller = "Dashboard", action = "Index" }
              );
 
+            routes.MapRoute(
+                name: "Customer",
+                url: "Customer/{action}/{id}",
+                defaults: new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

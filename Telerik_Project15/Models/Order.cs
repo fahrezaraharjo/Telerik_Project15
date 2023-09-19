@@ -21,9 +21,9 @@ namespace Telerik_Project15.Models
         public DateTime OrderDate { get; set; }
 
         [Required]
-        [Range(0.01, double.MaxValue, ErrorMessage = "TotalAmount must be greater than 0.")]
-        [Column(TypeName = "decimal(10, 2)")]
-        public decimal TotalAmount { get; set; }
+        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
+        [Column(TypeName = "decimal")]
+        public decimal Price { get; set; }
 
         [ForeignKey("CustomerID")]
         public Customer Customer { get; set; }
