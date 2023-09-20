@@ -1,7 +1,11 @@
-﻿using System.Data.Entity;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using System.Collections.Generic;
+using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Telerik_Project15.Models;
 
 
@@ -9,7 +13,7 @@ namespace Telerik_Project15.Controllers
 {
     public class CustomerController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext("name=ApplicationDbContext");
+        private readonly ApplicationDbContext db = new ApplicationDbContext("name=ApplicationDbContext");
 
         // GET: Customer
         public ActionResult Index()
@@ -17,104 +21,62 @@ namespace Telerik_Project15.Controllers
             return View(db.Customers.ToList());
         }
 
-        // GET: Customer/Details/5
-        public ActionResult Details(int? id)
+        [HttpGet]
+        public ActionResult Read([DataSourceRequest] DataSourceRequest request)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        // GET: Customer/Create
-        public ActionResult Create()
-        {
-            return View();
+            // Retrieve and return the data for the Kendo Grid
+            var customers = db.Customers.ToList(); // You might want to customize this query
+            return Json(customers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         // POST: Customer/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,FirstName,LastName,Email,Phone,BirthDate")] Customer customer)
+        public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
+                // Insert the new customer into the database
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                // Return a success response
+                return Json(new { Success = true });
             }
 
-            return View(customer);
+            // If ModelState is not valid, return validation errors
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+            return Json(new { Success = false, Errors = errors });
         }
 
-        // GET: Customer/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-
-        // POST: Customer/Edit/5
+        // POST: Customer/Update
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,FirstName,LastName,Email,Phone,BirthDate")] Customer customer)
+        public ActionResult Update(Customer customer)
         {
             if (ModelState.IsValid)
             {
+                // Update customer in the database (e.g., using Entity Framework)
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-            return View(customer);
+
+            return Json(new[] { customer }.ToDataSourceResult(new DataSourceRequest(), ModelState));
         }
 
-        // GET: Customer/Delete/5
-        public ActionResult Delete(int? id)
+        // POST: Customer/Delete
+        [HttpPost]
+        public JsonResult OnPostDestroy([DataSourceRequest] DataSourceRequest request, int id)
         {
-            if (id == null)
+            // Find the customer to delete by ID (e.g., using Entity Framework)
+            var customer = db.Customers.Find(id);
+            if (customer != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                // Remove customer from the database
+                db.Customers.Remove(customer);
+                db.SaveChanges();
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
 
-        // POST: Customer/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return Json(new[] { customer }.ToDataSourceResult(request, ModelState));
         }
     }
+
 }

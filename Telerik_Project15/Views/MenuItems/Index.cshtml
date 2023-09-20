@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Telerik_Project15.Models.MenuItem>
+
+@{
+    ViewBag.Title = "Menu Items";
+}
+
+<h2>Menu Items</h2>
+
+<div id="menuItemsGrid"></div>
+
+<script>
+    $(document).ready(function () {
+        $("#menuItemsGrid").kendoGrid({
+            dataSource: {
+                data: @Html.Raw(Json.Encode(Model)),
+                pageSize: 3
+            },
+            pageable: true,
+            columns: [
+                {
+                    template: "<img src='#= data.ImagePath #' alt='Menu Item Image' class='card-img-top' />",
+                    title: "Image"
+                },
+                {
+                    field: "Name",
+                    title: "Name"
+                },
+                {
+                    field: "Description",
+                    title: "Description"
+                },
+                {
+                    field: "Price",
+                    title: "Price",
+                    format: "{0:c}"
+                },
+                {
+                    template: "<a href='" + '@Url.Action("Details", "MenuItems")' + "/#= MenuItemID #'>Details</a>",
+                    title: "Actions"
+                }
+            ]
+        });
+    });
+</script>

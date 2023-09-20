@@ -297,6 +297,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css\Carousel.css" />
+    <Content Include="Content\css\Customer.css" />
     <Content Include="Content\css\Dashboard.css" />
     <Content Include="Content\css\Sidebar.css" />
     <Content Include="Content\js\Carousel.js" />
@@ -381,6 +382,7 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Shared\Partial\_CreateCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\Site.css" />

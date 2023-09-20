@@ -1,13 +1,90 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="https://kendo.cdn.telerik.com/themes/6.4.0/default/default-purple.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css") <!-- Include your CSS references here -->
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/Customer.css" rel="stylesheet" />
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #57cff5ba;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+            header h1 {
+                font-size: 36px;
+                margin: 0;
+            }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            nav ul li {
+                display: inline;
+                margin-right: 20px;
+                color: black;
+            }
+
+                nav ul li:last-child {
+                    margin-right: 0;
+                }
+
+        /* Container styles */
+        .container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            height: 100vh
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #57cff5ba;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Add any additional styles specific to your content here */
+
+    </style>
 </head>
 <body>
-    <div>
+    <header>
+        <h1>Customer Management</h1>
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
         @RenderBody()
-    </div>
+    <footer>
+        &copy; @DateTime.Now.Year Your Company Name. All rights reserved.
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
