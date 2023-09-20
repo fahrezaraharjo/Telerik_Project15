@@ -68,11 +68,16 @@ namespace Telerik_Project15.Controllers
         {
             // Find the customer to delete by ID (e.g., using Entity Framework)
             var customer = db.Customers.Find(CustomerID);
-            if (customer != null)
-            {
-                // Remove customer from the database
-                db.Customers.Remove(customer);
-                db.SaveChanges();
+            try {
+                if (customer != null)
+                {
+                    // Remove customer from the database
+                    db.Customers.Remove(customer);
+                    db.SaveChanges();
+                }
+            }
+            catch(Exception ex) {
+                return Json("Failed : " + ex.Message);
             }
 
             // Create a JavaScript object to hold the redirect URL
@@ -85,5 +90,4 @@ namespace Telerik_Project15.Controllers
             return Json(result);
         }
     }
-
 }
