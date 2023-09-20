@@ -303,6 +303,8 @@
     <Content Include="Content\js\Carousel.js" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\js\Chart.js" />
+    <Content Include="Content\js\Customer.js" />
+    <Content Include="Content\js\CustomerDelete.js" />
     <Content Include="Content\js\Dashboard.js" />
     <Content Include="Content\js\Sidebar.js" />
     <Content Include="Global.asax" />

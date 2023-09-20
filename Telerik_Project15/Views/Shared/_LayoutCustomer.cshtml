@@ -79,11 +79,12 @@
             </ul>
         </nav>
     </header>
-        @RenderBody()
+    @RenderBody()
     <footer>
         &copy; @DateTime.Now.Year Your Company Name. All rights reserved.
     </footer>
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/js/CustomerDelete.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

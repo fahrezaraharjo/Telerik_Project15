@@ -64,10 +64,10 @@ namespace Telerik_Project15.Controllers
 
         // POST: Customer/Delete
         [HttpPost]
-        public JsonResult OnPostDestroy([DataSourceRequest] DataSourceRequest request, int id)
+        public JsonResult OnPostDestroy([DataSourceRequest] DataSourceRequest request, int CustomerID)
         {
             // Find the customer to delete by ID (e.g., using Entity Framework)
-            var customer = db.Customers.Find(id);
+            var customer = db.Customers.Find(CustomerID);
             if (customer != null)
             {
                 // Remove customer from the database
@@ -75,7 +75,14 @@ namespace Telerik_Project15.Controllers
                 db.SaveChanges();
             }
 
-            return Json(new[] { customer }.ToDataSourceResult(request, ModelState));
+            // Create a JavaScript object to hold the redirect URL
+            var result = new
+            {
+                redirectUrl = Url.Action("Index", "Customer") // Specify the index action and controller
+            };
+
+            // Return the JavaScript object as JSON
+            return Json(result);
         }
     }
 
