@@ -254,6 +254,8 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DestinationViewModelsController.cs" />
+    <Compile Include="Models\DestinationViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MenuItems3Controller.cs" />
@@ -277,6 +279,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\TreeListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -354,7 +357,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Layout\_Layout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Country.cshtml" />
@@ -410,6 +412,12 @@
     <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Restaurants\Edit.cshtml" />
     <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\DestinationViewModels\Create.cshtml" />
+    <Content Include="Views\DestinationViewModels\Delete.cshtml" />
+    <Content Include="Views\DestinationViewModels\Details.cshtml" />
+    <Content Include="Views\DestinationViewModels\Edit.cshtml" />
+    <Content Include="Views\DestinationViewModels\Index.cshtml" />
+    <Content Include="Views\TreeList\TreeListPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

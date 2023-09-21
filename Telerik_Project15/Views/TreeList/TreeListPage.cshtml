@@ -1,0 +1,22 @@
+@using Telerik.Scaffolders.Models.TreeList
+
+@(Html.Kendo().TreeList<TreeListModel>()
+    .Name("treelist")
+        .Columns(columns =>
+    {
+        columns.Add().Field(e => e.Name);
+        columns.Add().Field(e => e.Id);
+        columns.Add().Field(e => e.ParentId);
+    })
+        
+                    .HtmlAttributes(new { style = "height:430px;" })
+       .DataSource(dataSource => dataSource
+        .Model(model => {
+            model.Id(p => p.Id);
+            model.ParentId(p => p.ParentId);
+            model.Expanded(true);
+            })
+        .Read(read => read.Action("Read", "TreeList"))
+    )
+)
+
