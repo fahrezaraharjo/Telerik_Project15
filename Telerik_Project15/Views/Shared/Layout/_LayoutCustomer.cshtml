@@ -60,7 +60,7 @@
             color: #fff;
             padding: 10px 0;
             text-align: center;
-            position: sticky;
+            position: absolute;
             bottom: 0;
             width: 100%;
         }
@@ -71,13 +71,7 @@
 </head>
 <body>
     <header>
-        <h1>Customer Management</h1>
-        <nav>
-            <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <!-- Add more navigation links as needed -->
-            </ul>
-        </nav>
+               @Html.Partial("~/Views/Shared/Partial/_PartialNavbar.cshtml")
     </header>
     @RenderBody()
     <footer>
