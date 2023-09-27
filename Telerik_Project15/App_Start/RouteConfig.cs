@@ -30,6 +30,30 @@ namespace Telerik_Project15
                 url: "Customer/{action}/{id}",
                 defaults: new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
             );
+            
+            routes.MapRoute(
+                name: "MenuItems",
+                url: "MenuItems/{action}/{id}",
+                defaults: new { controller = "MenuItems", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "OrderItems",
+                url: "OrderItems/{action}/{id}",
+                defaults: new { controller = "OrderItems", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Orders",
+                url: "Orders/{action}/{id}",
+                defaults: new { controller = "Orders", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Restaurants",
+                url: "Restaurants/{action}/{id}",
+                defaults: new { controller = "Restaurants", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

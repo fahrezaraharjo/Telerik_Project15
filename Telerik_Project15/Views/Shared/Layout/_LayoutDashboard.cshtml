@@ -19,6 +19,7 @@
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
     <link href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.default-main.min.css" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/Sidebar.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -34,6 +35,8 @@
             var chart = $("#internetUsersChart").data("kendoChart");
         });
     </script>
+    <script src="~/Content/js/Sidebar.js"></script>
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

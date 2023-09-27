@@ -1,0 +1,83 @@
+﻿/* Style for the modal popup */
+#createCustomerModal .modal-dialog {
+    max-width: 500px;
+}
+
+#createCustomerModal .modal-content {
+    border-radius: 0;
+}
+
+#createCustomerModal .modal-header {
+    background-color: #337ab7;
+    color: #fff;
+    border-bottom: none;
+}
+
+#createCustomerModal .modal-title {
+    font-weight: bold;
+}
+
+#createCustomerModal .modal-body {
+    padding: 20px;
+}
+
+#createCustomerModal .modal-footer {
+    border-top: none;
+}
+
+/* Style for the Kendo Grid */
+.k-grid {
+    border: 1px solid #ddd;
+}
+
+.k-grid-toolbar {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.k-grid-add {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+/* Style for buttons within the Kendo Grid */
+.k-button {
+    min-width: 75px;
+}
+
+/* Center-align the header text */
+.k-grid th.k-header {
+    text-align: center;
+}
+
+.k-table-thead, .k-table-tbody, .k-table-tfoot, .k-table-row, .k-table-alt-row {
+    border-color: inherit;
+    text-align: center !important;
+}
+
+/* Style for the "Edit" and "Delete" buttons */
+.k-grid td .k-button {
+    display: inline-block;
+    margin-right: 5px; /* Adjust the margin as needed */
+    vertical-align: middle;
+}
+
+    /* Style for the "Edit" button */
+    .k-grid td .k-button.k-grid-edit {
+        background-color: #5bc0de; /* Customize the background color */
+        color: #fff; /* Customize the text color */
+    }
+
+    /* Style for the "Delete" button */
+    .k-grid td .k-button.k-grid-delete {
+        background-color: #d9534f; /* Customize the background color */
+        color: #fff; /* Customize the text color */
+    }
+
+.k-grid .k-cell-inner {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center !important;
+    overflow: hidden;
+}

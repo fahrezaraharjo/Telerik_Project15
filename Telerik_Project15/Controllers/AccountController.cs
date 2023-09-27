@@ -25,7 +25,7 @@ namespace Telerik_Project15.Controllers
                 if (isAuthenticated)
                 {
                     // Redirect to the home page after successful login
-                    return RedirectToAction("Index", "DestinationViewModels");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {

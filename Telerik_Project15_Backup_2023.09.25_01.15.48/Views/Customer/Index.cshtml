@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Telerik_Project15.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer List";
+    Layout = "~/Views/Shared/Layout/_LayoutCustomer.cshtml";
+
+}
+@section scripts {
+    @Scripts.Render("~/bundles/kendo") <!-- Include Kendo UI JavaScript bundle -->
+
+    <script>
+        $(document).ready(function () {
+            // Show the modal popup when the "Add New Customer" button is clicked
+            $("#customerGrid").on("click", ".k-grid-add", function () {
+                $("#createCustomerModal").modal("show");
+            });
+
+            // Handle form submission when the modal "Save" button is clicked
+            $("#createCustomerForm").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        if (data.Success) {
+                            // Close the modal
+                            $("#createCustomerModal").modal("hide");
+
+                            // Refresh the grid (you may need to replace this with your own code)
+                            $("#customerGrid").data("kendoGrid").dataSource.read();
+                        } else {
+                            // Handle validation errors or other errors
+                            // Display errors in the modal if needed
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <h2>Customer List</h2>
+    @(Html.Kendo().Grid(Model)
+        .Name("customerGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.CustomerID).Title("ID");
+            columns.Bound(c => c.FirstName).Title("Name");
+            columns.Bound(c => c.LastName).Title("Last Name");
+            columns.Bound(c => c.Email).Title("Email");
+            columns.Bound(c => c.Phone).Title("Phone");
+            // Add more columns for other customer attributes as needed
+            columns.Command(command =>
+            {
+                command.Edit().Text("Edit"); // Customizing Edit button text
+                command.Destroy().Text("Delete"); // Customizing Delete button text
+            }).Width(200);
+        })
+        .ToolBar(toolbar => toolbar.Create().Text("Add New Customer")) // Customizing Create button text
+        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+        .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(new[] { 5, 10, 20 }) // Set available page sizes
+        .ButtonCount(5)) // Number of page buttons to display
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5) // Number of records to display per page
+        .Model(model =>
+        {
+            model.Id(c => c.CustomerID);
+            model.Field(c => c.CustomerID).Editable(false);
+        })
+        .Create(create => create.Action("Create", "Customer"))
+        .Update(update => update.Action("Update", "Customer"))
+        .Destroy(destroy => destroy.Action("OnPostDestroy", "Customer"))
+        )
+    )
+</div>

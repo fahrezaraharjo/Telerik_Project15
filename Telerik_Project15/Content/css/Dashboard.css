@@ -46,7 +46,9 @@ body {
     width: var(--sidebar-width);
     transition: all .3s ease-in-out;
     transform: translateX(0);
-    z-index: 9999999
+    z-index: 9999999;
+    left: 0
+    
 }
 
     .sidebar .close-aside {
@@ -274,9 +276,12 @@ body {
 -------------------------------- */
 
 .navbar {
-    background: #1f579bbd !important;
+    background: #5161ce !important;
     border: none !important;
-    border-bottom-left-radius: 20px
+    border-bottom-left-radius: 60px;
+    height: 80px;
+    margin-left: 10px;
+    padding-left: 50px
 }
 
     .navbar .dropdown-menu {

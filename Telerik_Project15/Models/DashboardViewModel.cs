@@ -10,6 +10,7 @@ namespace Telerik_Project15.Models
         public List<int> BarChartData { get; set; }
         public List<int> LineChartData { get; set; }
         public List<TableData> TableDataList { get; set; }
+        public object CustomerData { get; internal set; }
     }
 
     public class TableData

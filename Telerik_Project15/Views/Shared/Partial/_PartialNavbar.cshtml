@@ -4,9 +4,14 @@
     .Name("menu")
     .Items(items =>
     {
-        items.Add().Text("Home").Action("Index", "DestinationViewModels"); 
-        items.Add().Text("Dashboard").Action("Index", "Dashboard"); 
-        items.Add().Text("Customers").Action("Index", "Customer"); 
+        items.Add().Text("Home").Action("Index", "DestinationViewModels");
+        items.Add().Text("Dashboard").Action("Index", "Dashboard");
+        items.Add().Text("Customers").Action("Index", "Customer");
+        items.Add().Text("MenuItems").Action("Index", "MenuItems");
+        items.Add().Text("OrderItems").Action("Index", "OrderItems");
+        items.Add().Text("Orders").Action("Index", "Orders");
+        items.Add().Text("Restaurants").Action("Index", "Restaurants");
+
     })
     .HtmlAttributes(new { @class = "right-menu" }))
 </div>

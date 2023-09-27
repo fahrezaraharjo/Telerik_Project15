@@ -1,0 +1,24 @@
+﻿@(Html.Kendo().Chart()
+                                    .Name("lineChart")
+                                    .Title("Line Chart Example")
+                                    .Legend(legend => legend
+                                        .Visible(true)
+                                        .Position(ChartLegendPosition.Top)
+                                    )
+                                    .Series(series =>
+                                    {
+                                        series.Line(new int[] { 10, 20, 30, 40, 50 })
+                                            .Name("Series 1")
+                                            .Markers(marker => marker.Visible(true));
+                                        series.Line(new int[] { 50, 40, 30, 20, 10 })
+                                            .Name("Series 2")
+                                            .Markers(marker => marker.Visible(true));
+                                    })
+                                    .CategoryAxis(axis => axis
+                                        .Categories(new string[] { "Category 1", "Category 2", "Category 3", "Category 4", "Category 5" })
+                                    )
+                                    .ValueAxis(axis => axis
+                                        .Numeric()
+                                        .Title("Value")
+                                    )
+                                )

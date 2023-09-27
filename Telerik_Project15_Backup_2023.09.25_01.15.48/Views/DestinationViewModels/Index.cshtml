@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Telerik_Project15.Models.DestinationViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="background">
+    @Html.Partial("~/Views/Shared/Partial/_PartialNavbar.cshtml")
+    <div class="content container">
+        <div class="glassmorphism">
+            <h2>Welcome to My Website</h2>
+        </div>
+        <div class="glassmorphism">
+            <div class="demo-section wide">
+                <p> aku ada ga sih</p>
+                @(Html.Kendo().ListView<Telerik_Project15.Models.DestinationViewModel>()
+                    .Name("listView")
+                    .TagName("div")
+                    .DataSource(dataSource => dataSource
+                        .Read(read => read.Action("Grouping_Read", "DestinationViewModels"))
+                        .PageSize(6)
+                    )
+                    .ClientTemplate(Html.Kendo().Template()
+                        .AddHtml("<div class='k-card'>") // Start of Kendo Card
+                        .AddHtml("<div class='k-card-body'>")
+                        .AddHtml("<h5>${data.Title}</h5>")
+                        .AddHtml("<div class='destination-info k-hidden'>${data.Description}</div>")
+                        .AddHtml("</div>") // End of Kendo Card Body
+                        .AddHtml("<div class='k-card-actions k-card-actions-vertical k-card-actions-stretched'>")
+                        .AddComponent(rating => rating
+                            .Rating()
+                            .Name("rating_${data.Id}")
+                            .Min(1)
+                            .Max(5)
+                            .Label(false)
+                            .Readonly(true))
+                        .AddHtml("</div>") // End of Kendo Card Actions
+                        .AddHtml("</div>") // End of Kendo Card
+                    )
+                    .Pageable()
+                    .Events(ev => ev.DataBound("onDataBound"))
+                )
+            </div>
+
+            @(Html.Kendo().Window()
+                .Name("window")
+                .Title("Travel information")
+                .Actions(actions => actions.Close())
+                .Modal(true)
+                .Visible(false)
+                .Draggable()
+                .Resizable()
+                .Width(300)
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    function onDataBound(e) {
+        var listViewData = e.sender.dataSource.view();
+        $.each(listViewData, function (index, item) {
+            $("#rating_" + item.Id).val(item.Rating);
+        });
+    }
+
+    function onReadMoreClick(e) {
+        var window = $("#window").data("kendoWindow");
+        var clickedButton = $(this.element);
+        var description = clickedButton.parent().prev().find(".destination-info").text();
+        window.content(description);
+        window.center().open();
+    }
+</script>

@@ -1,0 +1,39 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - My Telerik MVC Application</title>
+    <link href="https://kendo.cdn.telerik.com/themes/6.4.0/default/default-purple.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/Dashboard.css" rel="stylesheet" />
+    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.117/js/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Content/js/Dashboard.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.2.829/js/jquery.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.2.829/js/jszip.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.2.829/js/kendo.all.min.js"></script>
+    <script src="https://cdn.kendostatic.com/2023.2.829/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <link href="https://kendo.cdn.telerik.com/2023.1.117/styles/kendo.default-main.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <main>
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </main>
+
+    <script>
+        $(function () {
+            // The Name() of the Chart is used to get its client-side instance.
+            var chart = $("#internetUsersChart").data("kendoChart");
+        });
+    </script>
+
+</body>
+</html>
